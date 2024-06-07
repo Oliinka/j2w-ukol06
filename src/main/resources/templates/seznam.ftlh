@@ -1,21 +1,27 @@
 [#ftl]
-[@c.page]
+
+[@c.page title="Seznam osob"]
+    [#list vizitky]
+
     <div class="seznam">
         <a href="/detail">
             <div class="vizitka">
-                <div class="jmeno">Dita (Přikrylová) Formánková</div>
-                <div class="firma">Czechitas z. s.</div>
+
+            [#items as vizitka]
+                <div class="jmeno">${vizitka.celeJmeno}</div>
+                <div class="firma">${vizitka.firma}</div>
                 <div class="udaje">
                     <div class="adresa">
-                        <div>Václavské náměstí 837/11</div>
-                        <div><span>11000</span> <span>Praha 1</span></div>
+                        <div><span>${vizitka.celaAdresa}</span></div>
+                        <div><span>${vizitka.obec}</span> <span>${vizitka.ulice}</span> </div> <div><span>${vizitka.psc}</span>
                     </div>
                     <div class="kontakty">
-                        <div><i class="las la-at"></i> <span>dita@czechitas.cs</span></div>
-                        <div><i class="las la-phone-alt"></i> <span>+420 800123456</span></div>
-                        <div><i class="las la-globe"></i> <span>www.czechitas.cz</span></div>
+                        <div><i class="las la-at"></i> <span>${vizitka.email}</span></div>
+                        <div><i class="las la-phone-alt"></i> <span>${vizitka.telefon}</span></div>
+                        <div><i class="las la-globe"></i> <span>${vizitka.web}</span></div>
                     </div>
                 </div>
+                [/#items]
             </div>
         </a>
 
@@ -28,4 +34,8 @@
             </div>
         </a>
     </div>
+    [/#list]
 [/@c.page]
+
+
+
