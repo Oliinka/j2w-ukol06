@@ -22,23 +22,23 @@ public class Vizitka {
     private Long id;
 
     @Length(max = 100)
-    @NotBlank
+    //@NotBlank
     private String celeJmeno;
 
     @Length(max = 100)
-    @NotBlank
+    //@NotBlank
     private String firma;
 
     @Length(max = 100)
-    @NotBlank
+    //@NotBlank
     private String ulice;
 
     @Length(max = 100)
-    @NotBlank
+    //@NotBlank
     private String obec;
 
     @Length(max = 100)
-    @NotBlank
+    //@NotBlank
     private String psc;
 
     @Length(max = 100)
