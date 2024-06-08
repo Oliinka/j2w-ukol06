@@ -2,8 +2,15 @@
 [@c.page]
     <div class="detail">
         <div class="vizitka">
-            <div class="jmeno">Dita (Přikrylová) Formánková</div>
-            <div class="firma">Czechitas z. s.</div>
+
+            [#if vizitka.jmeno??]
+                <div class="jmeno">${vizitka.jmeno}</div>
+            [/#if]
+
+            [#if vizitka.firma??]
+                <div class="firma">${vizitka.firma}</div>
+            [/#if]
+
             <div class="udaje">
                 <div class="adresa">
                     <div>Václavské náměstí 837/11</div>

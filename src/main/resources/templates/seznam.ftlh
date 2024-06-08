@@ -1,29 +1,53 @@
 [#ftl]
-
-[@c.page title="Seznam osob"]
-    [#list vizitky]
-
+[@c.page]
     <div class="seznam">
-        <a href="/detail">
-            <div class="vizitka">
 
+        [#list vizitka]
             [#items as vizitka]
-                <div class="jmeno">${vizitka.celeJmeno}</div>
-                <div class="firma">${vizitka.firma}</div>
-                <div class="udaje">
-                    <div class="adresa">
-                        <div><span>${vizitka.celaAdresa}</span></div>
-                        <div><span>${vizitka.obec}</span> <span>${vizitka.ulice}</span> </div> <div><span>${vizitka.psc}</span>
+
+                <a href="/vizitka/${vizitka.id}">
+                    <div class="vizitka">
+                        [#if vizitka.celeJmeno??]
+                            <div class="jmeno">${vizitka.celeJmeno}</div>
+                        [/#if]
+                        [#if vizitka.firma??]
+                            <div class="firma">${(vizitka.firma)!""}</div>
+                        [/#if]
+                        <div class="udaje">
+                    <span class="adresa">
+
+                        [#if vizitka.ulice??]
+                            <div>${vizitka.ulice}</div>
+                        [/#if]
+
+                        <div>
+                        [#if vizitka.psc??]
+                            <span>${vizitka.psc}</span>
+                        [/#if]
+                            [#if vizitka.obec??]
+                                <span>${vizitka.obec}</span>
+                            [/#if]
+                        </div>
+                    </span>
+
+                            <div class="kontakty">
+                                [#if vizitka.email?has_content]
+                                    <div><i class="bi bi-at"></i> ${vizitka.email}</div>
+                                [/#if]
+                                [#if vizitka.telefon?has_content]
+                                    <div><i class="bi bi-phone"></i> ${vizitka.telefon}</div>
+                                [/#if]
+                                [#if vizitka.web?has_content]
+                                    <div><i class="bi bi-globe"></i> ${vizitka.web}</div>
+                                [/#if]
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="kontakty">
-                        <div><i class="las la-at"></i> <span>${vizitka.email}</span></div>
-                        <div><i class="las la-phone-alt"></i> <span>${vizitka.telefon}</span></div>
-                        <div><i class="las la-globe"></i> <span>${vizitka.web}</span></div>
-                    </div>
-                </div>
-                [/#items]
-            </div>
-        </a>
+                </a>
+
+            [/#items]
+        [/#list]
 
         <a href="/nova">
             <div class="vizitka vizitka--nova">
@@ -34,8 +58,4 @@
             </div>
         </a>
     </div>
-    [/#list]
 [/@c.page]
-
-
-
