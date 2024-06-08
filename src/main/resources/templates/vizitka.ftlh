@@ -4,7 +4,7 @@
         <div class="vizitka">
 
             [#if vizitka.jmeno??]
-                <div class="jmeno">${vizitka.jmeno}</div>
+                <div class="jmeno">${vizitka.celeJmenoeleJmeno}</div>
             [/#if]
 
             [#if vizitka.firma??]
@@ -29,6 +29,7 @@
                     frameborder="0"></iframe>
         </div>
 
-        [@c.back /]
+        [@c.back/]
+
     </div>
 [/@c.page]
