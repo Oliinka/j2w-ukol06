@@ -2,30 +2,46 @@
 [@c.page]
     <div class="detail">
         <div class="vizitka">
-
-            [#if vizitka.jmeno??]
-                <div class="jmeno">${vizitka.celeJmenoeleJmeno}</div>
+            [#if vizitka.celeJmeno??]
+                <div class="jmeno">${vizitka.celeJmeno}</div>
             [/#if]
-
             [#if vizitka.firma??]
-                <div class="firma">${vizitka.firma}</div>
+                <div class="firma">${(vizitka.firma)!""}</div>
             [/#if]
-
             <div class="udaje">
-                <div class="adresa">
-                    <div>Václavské náměstí 837/11</div>
-                    <div><span>11000</span> <span>Praha 1</span></div>
-                </div>
+                    <span class="adresa">
+
+                        [#if vizitka.ulice??]
+                            <div>${vizitka.ulice}</div>
+                        [/#if]
+
+                        <div>
+                        [#if vizitka.psc??]
+                            <span>${vizitka.psc}</span>
+                        [/#if]
+                            [#if vizitka.obec??]
+                                <span>${vizitka.obec}</span>
+                            [/#if]
+                        </div>
+                    </span>
+
                 <div class="kontakty">
-                    <div><i class="las la-at"></i> <span>dita@czechitas.cs</span></div>
-                    <div><i class="las la-phone-alt"></i> <span>+420 800123456</span></div>
-                    <div><i class="las la-globe"></i> <span>www.czechitas.cz</span></div>
+                    [#if vizitka.email?has_content]
+                        <div><i class="las la-at"></i> ${vizitka.email}</div>
+                    [/#if]
+                    [#if vizitka.telefon?has_content]
+                        <div><i class="las la-phone-alt"></i> ${vizitka.telefon}</div>
+                    [/#if]
+                    [#if vizitka.web?has_content]
+                        <div><i class="las la-globe"></i> ${vizitka.web}</div>
+                    [/#if]
                 </div>
             </div>
         </div>
 
         <div class="mapa">
-            <iframe style="border:none" src="https://frame.mapy.cz/?q=${'Václavské náměstí 837/11, Praha'?url}" width="100%" height="100%"
+            <iframe style="border:none" src="https://frame.mapy.cz/?q=${'${vizitka.ulice},${vizitka.obec}'?url}"
+                    width="100%" height="100%"
                     frameborder="0"></iframe>
         </div>
 

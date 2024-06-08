@@ -32,13 +32,13 @@
 
                             <div class="kontakty">
                                 [#if vizitka.email?has_content]
-                                    <div><i class="bi bi-at"></i> ${vizitka.email}</div>
+                                    <div><i class="las la-at"></i> ${vizitka.email}</div>
                                 [/#if]
                                 [#if vizitka.telefon?has_content]
-                                    <div><i class="bi bi-phone"></i> ${vizitka.telefon}</div>
+                                    <div><i class="las la-phone-alt"></i> ${vizitka.telefon}</div>
                                 [/#if]
                                 [#if vizitka.web?has_content]
-                                    <div><i class="bi bi-globe"></i> ${vizitka.web}</div>
+                                    <div><i class="las la-globe"></i> ${vizitka.web}</div>
                                 [/#if]
                             </div>
                         </div>
@@ -58,6 +58,4 @@
             </div>
         </a>
     </div>
-
-
 [/@c.page]

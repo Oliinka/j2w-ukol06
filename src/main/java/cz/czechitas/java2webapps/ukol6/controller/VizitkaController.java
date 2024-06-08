@@ -2,6 +2,8 @@ package cz.czechitas.java2webapps.ukol6.controller;
 
 import cz.czechitas.java2webapps.ukol6.entity.Vizitka;
 import cz.czechitas.java2webapps.ukol6.repository.VizitkaRepository;
+
+import jakarta.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -9,9 +11,11 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import jakarta.validation.Valid;
 import java.util.Optional;
 
+/**
+ * Kontroler obsluhující zobrazování vizitek.
+ */
 @Controller
 public class VizitkaController {
 
@@ -23,15 +27,14 @@ public class VizitkaController {
 
     @InitBinder
     public void nullStringBinding(WebDataBinder binder) {
+        // prázdné textové řetězce nahradit null hodnotou
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
     }
 
     @GetMapping("/")
     public ModelAndView seznam() {
         return new ModelAndView("seznam")
-                //slovo v tomto případě "vizitka" je clovo co nastavuju ve ftlh souborech
                 .addObject("vizitka", vizitkaRepository.findAll());
-
     }
 
     @GetMapping("/nova")
@@ -46,8 +49,8 @@ public class VizitkaController {
             return "formular";
         }
         vizitkaRepository.save(vizitka);
-        return "redirect:/";
-    }
+        return "redirect:/";}
+
 
     @GetMapping("/vizitka/{id}")
     public ModelAndView detail(@PathVariable long id) {
@@ -67,7 +70,6 @@ public class VizitkaController {
         vizitkaRepository.save(vizitka);
         return "redirect:/";
     }
-
     @PostMapping(value = "/{id}", params = "akce=smazat")
     public String smazat(@PathVariable long id) {
         vizitkaRepository.deleteById(id);
